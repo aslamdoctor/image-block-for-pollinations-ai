@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/ai-media-generator",
+  "version": "0.1.0",
+  "title": "AI Media Generator",
+  "category": "widgets",
+  "icon": "art",
+  "description": "Block for generating image using AI and then insert it into content & media library.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "generatedImageId": {
+      "type": "number",
+      "default": 0
+    },
+    "generatedImageURL": {
+      "type": "string",
+      "default": ""
+    },
+    "promptText": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "ai-media-generator",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
