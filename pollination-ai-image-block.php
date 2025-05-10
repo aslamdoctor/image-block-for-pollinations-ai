@@ -3,7 +3,7 @@
  * Plugin Name:       Pollination AI Image Block
  * Description:       WordPress block for generating image using Pollination AI and insert into content & media library
  * Requires at least: 6.6
- * Requires PHP:      7.2
+ * Requires PHP:      7.4.0
  * Version:           1.0.0
  * Author:            Aslam Doctor
  * Author URI:        https://aslamdoctor.com
