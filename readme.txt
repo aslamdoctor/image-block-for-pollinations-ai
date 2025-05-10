@@ -3,9 +3,9 @@ Contributors:      aslamdoctor
 Donate link:       https://github.com/sponsors/aslamdoctor
 Tags:              block, ai, image generator, gutenberg, media
 Requires at least: 6.6
-Tested up to:      6.8.1
+Tested up to:      6.8
 Requires PHP:      7.4.0
-Stable tag:        0.1.0
+Stable tag:        1.0.0
 License:           GPLv3 or later License
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 
