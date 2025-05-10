@@ -9,7 +9,7 @@
  * Author URI:        https://aslamdoctor.com
  * Developer:         Aslam Doctor
  * Developer URI:     https://aslamdoctor.com/
- * License:           GNU General Public License v3.0
+ * License:           GPLv3 or later License
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       pollination-ai-image-block
  *
