@@ -1,4 +1,4 @@
-# Rearrange Woocommerce Products
+# Pollination AI Image Block
 
 ## Development Setup
 
