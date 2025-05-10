@@ -4,26 +4,28 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-ai-media-generator {
-	.form-container{
-		border:1px solid #ddd;
+.wp-block-create-block-pollination-ai-image-block {
+
+	.form-container {
+		border: 1px solid #ddd;
 		background-color: #f9f9f9;
-		padding:15px;
+		padding: 15px;
 		box-sizing: border-box;
 	}
 }
-.has-error{
+
+.has-error {
 	color: #f00;
 	font-size: 12px;
 	margin-top: 10px;
 }
 
-.buttons-row{
+.buttons-row {
 	display: flex;
 	gap: 10px;
 }
 
-.generated-image{
+.generated-image {
 	display: block;
-	margin:20px 0 0 0;
+	margin: 20px 0 0 0;
 }
