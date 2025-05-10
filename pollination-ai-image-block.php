@@ -1,11 +1,14 @@
 <?php
 /**
  * Plugin Name:       Pollination AI Image Block
- * Description:       Block for generating image using AI and then insert it into content & media library.
+ * Description:       WordPress block for generating image using Pollination AI and insert into content & media library
  * Requires at least: 6.6
  * Requires PHP:      7.2
  * Version:           1.0.0
- * Author:            aslamdoctor
+ * Author:            Aslam Doctor
+ * Author URI:        https://aslamdoctor.com
+ * Developer:         Aslam Doctor
+ * Developer URI:     https://aslamdoctor.com/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       pollination-ai-image-block
@@ -123,3 +126,18 @@ function pollination_ai_image_block_save_image() {
 }
 
 add_action( 'wp_ajax_pollination_ai_image_block_save_image', 'pollination_ai_image_block_save_image' );
+
+
+/**
+ * Add sponsor link to plugin listing page.
+ *
+ * @param [Array]  $links All links related to specific plugin under Admin>Plugins section.
+ * @param [String] $file The plugin file path.
+ */
+function pollination_ai_image_block_sponsor_link( $links, $file ) {
+	if ( $file === plugin_basename( __FILE__ ) ) {
+		$links[] = '<a href="https://github.com/sponsors/aslamdoctor"><span class="dashicons dashicons-star-filled" aria-hidden="true" style="font-size:14px;line-height:1.3"></span>' . __( 'Sponsor', 'pollination-ai-image-block' ) . '</a>';
+	}
+	return $links;
+}
+add_filter( 'plugin_row_meta', 'pollination_ai_image_block_sponsor_link', 10, 2 );
