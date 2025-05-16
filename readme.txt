@@ -58,13 +58,22 @@ Yes, this plugin is completely free to use as it relies on the free tier of the 
 2. Entering a prompt and generating an image
 3. The generated image ready to be inserted
 
-== Changelog ==
-
-= 0.1.0 =
-* Initial release
 
 == External services ==
 
 This plugin uses the AI image generation. When you enter a prompt, that text is sent to Pollinations.ai. The generated images are saved to your WordPress media library.
 
 This feature is provided by "Pollinations.AI": <a href="https://pollinations.ai/terms">Terms & Conditions</a>
+
+Pollinations AI an open-source platform offering easy text & image generation APIs.
+
+
+== Plugin sourcecode ==
+<a href="https://github.com/aslamdoctor/image-block-for-pollinations-ai">https://github.com/aslamdoctor/image-block-for-pollinations-ai</a>
+
+
+
+== Changelog ==
+
+= 0.1.0 =
+* Initial release
