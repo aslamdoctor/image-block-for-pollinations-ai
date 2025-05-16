@@ -48,80 +48,82 @@ add_action( 'init', 'ibpai_create_block_init' );
  * @return void
  */
 function ibpai_save_image() {
-	// Get the base64 data.
-	$image_data = isset( $_POST['image_data'] ) ? sanitize_text_field( wp_unslash( $_POST['image_data'] ) ) : '';
-	$filename   = 'image-block-for-pollinations-ai-' . time() . '.jpg';
-
-	// Decode base64 data.
-	$decoded_image = base64_decode( $image_data ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
-
-	// Get WordPress upload directory.
-	$upload_dir = wp_upload_dir();
-
-	// Create temporary file.
-	$temp_file = $upload_dir['path'] . '/' . $filename;
-
-	// Use WP_Filesystem instead of direct file operations.
-	global $wp_filesystem;
-	if ( ! function_exists( 'WP_Filesystem' ) ) {
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-	}
-	WP_Filesystem();
-	$wp_filesystem->put_contents( $temp_file, $decoded_image, FS_CHMOD_FILE );
-
-	// Prepare file array for media library.
-	$file_array = array(
-		'name'     => $filename,
-		'tmp_name' => $temp_file,
-	);
-
-	// Check file type.
-	$filetype = wp_check_filetype( basename( $temp_file ), null );
-	if ( ! $filetype['type'] ) {
-			wp_delete_file( $temp_file );
-			wp_send_json_error( 'Invalid file type' );
-			return;
-	}
-
-	// Required for media_handle_sideload.
-	require_once ABSPATH . 'wp-admin/includes/media.php';
-	require_once ABSPATH . 'wp-admin/includes/file.php';
-	require_once ABSPATH . 'wp-admin/includes/image.php';
-
-	// Insert into media library.
-	$attachment_id = media_handle_sideload( $file_array, 0 );
-
-	// Clean up.
-	if ( file_exists( $temp_file ) ) {
-		wp_delete_file( $temp_file );
-	}
-
-	if ( is_wp_error( $attachment_id ) ) {
-			wp_send_json_error( $attachment_id->get_error_message() );
-			return;
-	}
-
 	if ( isset( $_POST['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'image-block-for-pollinations-ai-nonce' ) ) {
-		$prompt_text = isset( $_POST['prompt_text'] ) ? sanitize_text_field( wp_unslash( $_POST['prompt_text'] ) ) : '';
+		// Get the base64 data.
+		$image_data = isset( $_POST['image_data'] ) ? sanitize_text_field( wp_unslash( $_POST['image_data'] ) ) : '';
+		$filename   = 'image-block-for-pollinations-ai-' . time() . '.jpg';
 
-		// Update the post content of the attachment (used for the description).
-		wp_update_post(
-			array(
-				'ID'           => $attachment_id,
-				'post_content' => sanitize_text_field( $prompt_text ),
-			)
+		// Decode base64 data.
+		$decoded_image = base64_decode( $image_data ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
+
+		// Get WordPress upload directory.
+		$upload_dir = wp_upload_dir();
+
+		// Create temporary file.
+		$temp_file = $upload_dir['path'] . '/' . $filename;
+
+		// Use WP_Filesystem instead of direct file operations.
+		global $wp_filesystem;
+		if ( ! function_exists( 'WP_Filesystem' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+		}
+		WP_Filesystem();
+		$wp_filesystem->put_contents( $temp_file, $decoded_image, FS_CHMOD_FILE );
+
+		// Prepare file array for media library.
+		$file_array = array(
+			'name'     => $filename,
+			'tmp_name' => $temp_file,
 		);
 
-		// set alt text of the image.
-		update_post_meta( $attachment_id, '_wp_attachment_image_alt', sanitize_text_field( $prompt_text ) );
+		// Check file type.
+		$filetype = wp_check_filetype( basename( $temp_file ), null );
+		if ( ! $filetype['type'] ) {
+				wp_delete_file( $temp_file );
+				wp_send_json_error( 'Invalid file type' );
+				return;
+		}
 
-		// Return success response.
-		wp_send_json_success(
-			array(
-				'attachment_id' => $attachment_id,
-				'url'           => wp_get_attachment_url( $attachment_id ),
-			)
-		);
+		// Required for media_handle_sideload.
+		require_once ABSPATH . 'wp-admin/includes/media.php';
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+
+		// Insert into media library.
+		$attachment_id = media_handle_sideload( $file_array, 0 );
+
+		// Clean up.
+		if ( file_exists( $temp_file ) ) {
+			wp_delete_file( $temp_file );
+		}
+
+		if ( is_wp_error( $attachment_id ) ) {
+				wp_send_json_error( $attachment_id->get_error_message() );
+				return;
+		}
+
+		if ( isset( $_POST['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'image-block-for-pollinations-ai-nonce' ) ) {
+			$prompt_text = isset( $_POST['prompt_text'] ) ? sanitize_text_field( wp_unslash( $_POST['prompt_text'] ) ) : '';
+
+			// Update the post content of the attachment (used for the description).
+			wp_update_post(
+				array(
+					'ID'           => $attachment_id,
+					'post_content' => sanitize_text_field( $prompt_text ),
+				)
+			);
+
+			// set alt text of the image.
+			update_post_meta( $attachment_id, '_wp_attachment_image_alt', sanitize_text_field( $prompt_text ) );
+
+			// Return success response.
+			wp_send_json_success(
+				array(
+					'attachment_id' => $attachment_id,
+					'url'           => wp_get_attachment_url( $attachment_id ),
+				)
+			);
+		}
 	}
 }
 

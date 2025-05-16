@@ -63,6 +63,8 @@ Yes, this plugin is completely free to use as it relies on the free tier of the 
 = 0.1.0 =
 * Initial release
 
-== Privacy Policy ==
+== External services ==
 
-This plugin uses the Pollinations.ai API to generate images. When you enter a prompt, that text is sent to Pollinations.ai. The generated images are saved to your WordPress media library. No personal data is collected or shared beyond what is necessary for the functionality of the plugin.
+This plugin uses the AI image generation. When you enter a prompt, that text is sent to Pollinations.ai. The generated images are saved to your WordPress media library.
+
+This feature is provided by "Pollinations.AI": <a href="https://pollinations.ai/terms">Terms & Conditions</a>
