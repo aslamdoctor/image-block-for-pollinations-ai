@@ -1,11 +1,10 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/pollination-ai-image-block",
+  "name": "create-block/image-block-for-pollinations-ai",
   "version": "0.1.0",
-  "title": "Pollination AI Image Block:",
+  "title": "AI Image Block",
   "category": "widgets",
-  "icon": "art",
   "description": "Block for generating image using AI and then insert it into content & media library.",
   "example": {},
   "supports": {
@@ -25,7 +24,7 @@
       "default": ""
     }
   },
-  "textdomain": "pollination-ai-image-block",
+  "textdomain": "image-block-for-pollinations-ai",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",

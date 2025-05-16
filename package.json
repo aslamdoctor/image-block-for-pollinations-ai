@@ -1,5 +1,5 @@
 {
-	"name": "pollination-ai-image-block",
+	"name": "image-block-for-pollinations-ai",
 	"version": "1.0.0",
 	"description": "Block for generating image using AI and then insert it into content & media library.",
 	"author": "aslamdoctor",

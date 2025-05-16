@@ -1,4 +1,4 @@
-=== Pollination AI Image Block ===
+=== Image Block for Pollinations.ai ===
 Contributors:      aslamdoctor
 Donate link:       https://github.com/sponsors/aslamdoctor
 Tags:              block, ai, image generator, gutenberg, media
@@ -13,7 +13,7 @@ Generate AI images directly from the WordPress editor and add them to your media
 
 == Description ==
 
-Pollination AI Image Block allows you to generate images using AI technology directly within the WordPress block editor. Simply enter a text prompt describing the image you want to create, and the plugin will generate it for you.
+Image Block for Pollinations.ai allows you to generate images using AI technology directly within the WordPress block editor. Simply enter a text prompt describing the image you want to create, and the plugin will generate it for you.
 
 **Features:**
 
@@ -27,15 +27,15 @@ This plugin uses the Pollinations.ai API to generate images based on your text d
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/pollination-ai-image-block` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/image-block-for-pollinations-ai` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Pollination AI Image Block in the block editor to start generating images
+3. Use the Image Block for Pollinations.ai in the block editor to start generating images
 
 == Frequently Asked Questions ==
 
 = How do I generate an image? =
 
-1. Add the 'Pollination AI Image Block' to your post or page
+1. Add the 'Image Block for Pollinations.ai' to your post or page
 2. Enter a descriptive text prompt in the text area
 3. Click "Generate Image"
 4. When the image appears, click "Save and insert" to add it to your content and media library
@@ -54,7 +54,7 @@ Yes, this plugin is completely free to use as it relies on the free tier of the 
 
 == Screenshots ==
 
-1. Pollination AI Image Block in the editor
+1. Image Block for Pollinations.ai in the editor
 2. Entering a prompt and generating an image
 3. The generated image ready to be inserted
 

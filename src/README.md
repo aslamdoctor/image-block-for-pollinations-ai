@@ -1,4 +1,4 @@
-# Pollination AI Image Block
+# Image Block for Pollinations.ai
 
 ## Development Setup
 

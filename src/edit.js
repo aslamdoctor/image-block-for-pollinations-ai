@@ -57,7 +57,7 @@ export default function Edit( { setAttributes, clientId } ) {
 			setError(
 				`<strong>${ __(
 					'Error generating image:',
-					'pollination-ai-image-block'
+					'image-block-for-pollinations-ai'
 				) }</strong><br/> ${ errorMsg }`
 			);
 		} finally {
@@ -94,11 +94,11 @@ export default function Edit( { setAttributes, clientId } ) {
 					// Get base64 data (remove the data URL prefix)
 					const base64data = reader.result.split( ',' )[ 1 ];
 
-					wp.ajax.send( 'pollination_ai_image_block_save_image', {
+					wp.ajax.send( 'ibpai_save_image', {
 						data: {
 							prompt_text: tempPromptText,
 							image_data: base64data,
-							nonce: aiMediaGenerator.nonce
+							nonce: ibpaiMediaGenerator.nonce
 						},
 						success( response ) {
 							setAttributes( {
@@ -128,7 +128,7 @@ export default function Edit( { setAttributes, clientId } ) {
 							setError(
 								`<strong>${ __(
 									'Error saving image:',
-									'pollination-ai-image-block'
+									'image-block-for-pollinations-ai'
 								) }</strong><br/> ${ errorMsg }`
 							);
 						},
@@ -147,11 +147,11 @@ export default function Edit( { setAttributes, clientId } ) {
 				<div className="form-container">
 					<TextareaControl
 						rows={ 3 }
-						label={ __( 'Prompt Text', 'pollination-ai-image-block' ) }
+						label={ __( 'Prompt Text', 'image-block-for-pollinations-ai' ) }
 						value={ tempPromptText || '' }
 						help={ `${ __(
 							'Characters left:',
-							'pollination-ai-image-block'
+							'image-block-for-pollinations-ai'
 						) } ${ maxLength - tempPromptText.length }` }
 						disabled={ loading ? true : false }
 						onChange={ ( value ) => {
@@ -167,10 +167,10 @@ export default function Edit( { setAttributes, clientId } ) {
 								onClick={ () => generateImage() }
 							>
 								{ loading
-									? __( 'Loading…', 'pollination-ai-image-block' )
+									? __( 'Loading…', 'image-block-for-pollinations-ai' )
 									: __(
 											'Generate Image',
-											'pollination-ai-image-block'
+											'image-block-for-pollinations-ai'
 									  ) }
 							</Button>
 							{ loading && <Spinner /> }
@@ -187,7 +187,7 @@ export default function Edit( { setAttributes, clientId } ) {
 							>
 								{ __(
 									'Save and insert',
-									'pollination-ai-image-block'
+									'image-block-for-pollinations-ai'
 								) }
 							</Button>
 
@@ -197,7 +197,7 @@ export default function Edit( { setAttributes, clientId } ) {
 									resetForm();
 								} }
 							>
-								{ __( 'Cancel', 'pollination-ai-image-block' ) }
+								{ __( 'Cancel', 'image-block-for-pollinations-ai' ) }
 							</Button>
 						</div>
 					) }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Pollination AI Image Block
+ * Plugin Name:       Image Block for Pollinations.ai
  * Description:       WordPress block for generating image using Pollination AI and insert into content & media library
  * Requires at least: 6.6
  * Requires PHP:      7.4.0
@@ -11,7 +11,7 @@
  * Developer URI:     https://aslamdoctor.com/
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       pollination-ai-image-block
+ * Text Domain:       image-block-for-pollinations-ai
  *
  * @package CreateBlock
  */
@@ -27,19 +27,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function create_block_pollination_ai_image_block_block_init() {
+function ibpai_create_block_init() {
 	register_block_type( __DIR__ . '/build' );
 
 	// Localize script to pass nonce to JavaScript.
 	wp_localize_script(
-		'create-block-pollination-ai-image-block-editor-script',
-		'aiMediaGenerator',
+		'create-block-image-block-for-pollinations-ai-editor-script',
+		'ibpaiMediaGenerator',
 		array(
-			'nonce' => wp_create_nonce( 'pollination-ai-image-block-nonce' ),
+			'nonce' => wp_create_nonce( 'image-block-for-pollinations-ai-nonce' ),
 		)
 	);
 }
-add_action( 'init', 'create_block_pollination_ai_image_block_block_init' );
+add_action( 'init', 'ibpai_create_block_init' );
 
 
 /**
@@ -47,10 +47,10 @@ add_action( 'init', 'create_block_pollination_ai_image_block_block_init' );
  *
  * @return void
  */
-function pollination_ai_image_block_save_image() {
+function ibpai_save_image() {
 	// Get the base64 data.
 	$image_data = isset( $_POST['image_data'] ) ? sanitize_text_field( wp_unslash( $_POST['image_data'] ) ) : '';
-	$filename   = 'pollination-ai-image-block-' . time() . '.jpg';
+	$filename   = 'image-block-for-pollinations-ai-' . time() . '.jpg';
 
 	// Decode base64 data.
 	$decoded_image = base64_decode( $image_data ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
@@ -101,7 +101,7 @@ function pollination_ai_image_block_save_image() {
 			return;
 	}
 
-	if ( isset( $_POST['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'pollination-ai-image-block-nonce' ) ) {
+	if ( isset( $_POST['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'image-block-for-pollinations-ai-nonce' ) ) {
 		$prompt_text = isset( $_POST['prompt_text'] ) ? sanitize_text_field( wp_unslash( $_POST['prompt_text'] ) ) : '';
 
 		// Update the post content of the attachment (used for the description).
@@ -125,7 +125,7 @@ function pollination_ai_image_block_save_image() {
 	}
 }
 
-add_action( 'wp_ajax_pollination_ai_image_block_save_image', 'pollination_ai_image_block_save_image' );
+add_action( 'wp_ajax_ibpai_save_image', 'ibpai_save_image' );
 
 
 /**
@@ -134,10 +134,10 @@ add_action( 'wp_ajax_pollination_ai_image_block_save_image', 'pollination_ai_ima
  * @param [Array]  $links All links related to specific plugin under Admin>Plugins section.
  * @param [String] $file The plugin file path.
  */
-function pollination_ai_image_block_sponsor_link( $links, $file ) {
-	if ( $file === plugin_basename( __FILE__ ) ) {
-		$links[] = '<a href="https://github.com/sponsors/aslamdoctor"><span class="dashicons dashicons-star-filled" aria-hidden="true" style="font-size:14px;line-height:1.3"></span>' . __( 'Sponsor', 'pollination-ai-image-block' ) . '</a>';
+function ibpai_sponsor_link( $links, $file ) {
+	if ( plugin_basename( __FILE__ ) === $file ) {
+		$links[] = '<a href="https://github.com/sponsors/aslamdoctor"><span class="dashicons dashicons-star-filled" aria-hidden="true" style="font-size:14px;line-height:1.3"></span>' . __( 'Sponsor', 'image-block-for-pollinations-ai' ) . '</a>';
 	}
 	return $links;
 }
-add_filter( 'plugin_row_meta', 'pollination_ai_image_block_sponsor_link', 10, 2 );
+add_filter( 'plugin_row_meta', 'ibpai_sponsor_link', 10, 2 );
