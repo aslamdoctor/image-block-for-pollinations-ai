@@ -75,5 +75,5 @@ Pollinations AI an open-source platform offering easy text & image generation AP
 
 == Changelog ==
 
-= 0.1.0 =
+= 1.0.0 =
 * Initial release
