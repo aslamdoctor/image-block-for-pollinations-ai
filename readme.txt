@@ -50,7 +50,7 @@ Yes, this plugin is completely free to use as it relies on the free tier of the 
 
 == Plugin Demo ==
 
-[youtube https://www.youtube.com/watch?v=lDZGzCijDXM]
+[youtube https://www.youtube.com/watch?v=JSUqMsRxN1U]
 
 == Screenshots ==
 
