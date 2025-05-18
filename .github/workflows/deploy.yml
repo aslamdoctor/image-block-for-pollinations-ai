@@ -1,0 +1,30 @@
+name: Deploy to WordPress.org
+on:
+  push:
+    tags:
+    - "*"
+jobs:
+  tag:
+    name: New tag
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    # - name: Set up Node.js
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: '22.14.0'
+    #     cache: 'npm'
+
+    # - name: Build # Add a build step if needed
+    #   run: |
+    #     npm install
+    #     npm run prod
+
+    - name: WordPress Plugin SVN Deploy
+      uses: 10up/action-wordpress-plugin-deploy@stable
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SLUG: image-block-for-pollinations-ai # Replace with your plugin slug
+        ASSETS_DIR: assets # Optional - defaults to .wordpress-org
