@@ -4,7 +4,7 @@
  * Description:       WordPress block for generating image using Pollination AI and insert into content & media library
  * Requires at least: 6.6
  * Requires PHP:      7.4.0
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Aslam Doctor
  * Author URI:        https://aslamdoctor.com
  * Developer:         Aslam Doctor

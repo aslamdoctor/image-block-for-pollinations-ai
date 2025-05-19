@@ -5,7 +5,7 @@ Tags:              block, ai, image generator, gutenberg, media
 Requires at least: 6.6
 Tested up to:      6.8
 Requires PHP:      7.4.0
-Stable tag:        1.0.0
+Stable tag:        1.0.2
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,9 @@ Pollinations AI an open-source platform offering easy text & image generation AP
 
 
 == Changelog ==
+
+= 1.0.2 =
+* Minor fixes and rebuild files
 
 = 1.0.1 =
 * Banner image updated
